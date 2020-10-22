@@ -25,11 +25,7 @@ class PageSelection extends Component{
 
         return(
             <Pagination>
-                <Pagination.First />
-                <Pagination.Prev />
                 {items}
-                <Pagination.Next />
-                <Pagination.Last />
             </Pagination>
         )
     }
@@ -37,7 +33,7 @@ class PageSelection extends Component{
 
 const mapStateToProps = state => {
     return {
-        blogs : state.blogs,
+        blogs : state.searchResult,
         page : state.page
     }
 }
