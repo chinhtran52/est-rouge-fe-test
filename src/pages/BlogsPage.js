@@ -2,16 +2,9 @@ import React, { Component } from "react";
 
 import { Container,Col,Row ,Button,ButtonGroup,DropdownButton,Dropdown} from 'react-bootstrap';
 
-import * as blogApi from '../api/BlogApi';
-
 import SearchBar from '../components/SearchBar';
 import ListBlogs from '../components/ListBlogs';
 import Pagination from '../components/Pagination';
-
-const getListBlogs = async () => {
-  const result = (await blogApi.getAllBlogs()).data
-  console.log(result)
-}
 
 export default class BlogsPage extends Component {
 
@@ -58,4 +51,3 @@ export default class BlogsPage extends Component {
       )
     }
   }
-  

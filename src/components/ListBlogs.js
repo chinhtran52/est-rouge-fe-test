@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 
-import {Media} from 'react-bootstrap';
+import {Media,Button} from 'react-bootstrap';
 
-import {data} from './data'
+import { connect } from "react-redux";
 
-export default class ListBlogs extends Component{
+class ListBlogs extends Component{
 
-    state = {data}
-
+    getRedux = () => {
+        console.log(this.props)
+      }
+    
     render(){
-        const listBlogs = this.state.data.map((item,index)=>(
+        const {blogs,page} = this.props
+        // const listBlogs = 'list...'
+        const listBlogs = blogs.slice((page-1)*10,page*10).map((item,index)=>(
             <div key={index}>
                 <Media>
                     <img
@@ -22,13 +26,26 @@ export default class ListBlogs extends Component{
                     <Media.Body>
                         <h5 style={{textAlign:"left"}}>{item.title}</h5>
                         <p style={{textAlign:"left"}}>{item.content.length>=70?item.content.slice(0,70)+'...':item.content}</p>
+                        <p style={{textAlign:"right",fontSize:12, fontStyle:'italic'}}>{item.createdAt}</p>
                     </Media.Body>
                 </Media>
                 <br/>
             </div>
         ))
         return(
-            <div>{listBlogs}</div>
+            <div>
+                {listBlogs}
+                <Button onClick={this.getRedux}>Test</Button>
+            </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        blogs : state.blogs,
+        page : state.page
+    }
+}
+
+export default connect(mapStateToProps,null)(ListBlogs);

@@ -6,3 +6,10 @@ export const sort = (sort) => {
         sort
     }
 }
+
+export const changePage = (page) => {
+    return{
+        type: 'CHANGE_PAGE',
+        page: page
+    }
+}
