@@ -6,6 +6,7 @@ const initState = {
         type: 'time',
         by: 'ascending'
     },
+    search: '',
     page: 1
 }
 
