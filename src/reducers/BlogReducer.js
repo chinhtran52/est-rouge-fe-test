@@ -12,7 +12,7 @@ export const initReducer = (state=initState,action) =>{
             state.page = action.page
             return {...state}
         case 'SORT':
-            state.blogs = [...state.blogs.sort((a, b) => (a[action.info] > b[action.info]) ? 1 : -1)]
+            state.searchResult = [...state.blogs.sort((a, b) => (a[action.info] > b[action.info]) ? 1 : -1)]
             state.page = 1
             return {...state}
         case 'FETCH_BLOGS':
